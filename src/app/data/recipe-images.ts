@@ -1,0 +1,34 @@
+export const RECIPE_IMAGE_URLS = {
+  shakshuka:
+    'https://images.unsplash.com/photo-1657652996084-089470dc3efd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  pumpkinSoup:
+    'https://images.unsplash.com/photo-1764015939164-d5359a90c79c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  teriyakiChicken:
+    'https://images.unsplash.com/photo-1636401870585-a8852371e84a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  cheesecake:
+    'https://images.unsplash.com/photo-1676300185983-d5f242babe34?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  matchaLatte:
+    'https://images.unsplash.com/photo-1742790104414-c3a42088942d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  mulledWine:
+    'https://images.unsplash.com/photo-1669847171248-8f12c8160d57?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  ramen:
+    'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  brownie:
+    'https://images.unsplash.com/photo-1461009312844-e80697a81cc7?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  oatmeal:
+    'https://images.unsplash.com/photo-1501432781167-c0ccfd492297?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  chickenNoodleSoup:
+    'https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  mushroomPasta:
+    'https://images.unsplash.com/photo-1695762445810-f7aa3d33e070?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  beefSteak:
+    'https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  salmon:
+    'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  greekSalad:
+    'https://images.unsplash.com/photo-1625944230945-1b7dd3b949ab?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  tiramisu:
+    'https://images.unsplash.com/photo-1766232333746-b0a2697d6d0d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+  orangeLemonade:
+    'https://images.unsplash.com/photo-1775264175004-604006f6c8b0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=60&w=3000',
+} as const;

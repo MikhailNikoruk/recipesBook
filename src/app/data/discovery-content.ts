@@ -1,3 +1,5 @@
+import { RECIPE_IMAGE_URLS } from './recipe-images';
+
 export interface EditorialCollection {
   readonly title: string;
   readonly description: string;
@@ -23,21 +25,21 @@ export const EDITORIAL_COLLECTIONS: readonly EditorialCollection[] = [
   {
     title: 'Уютные ужины буднего дня',
     description: 'Быстрые ужины с ярким вкусом, которые реально приготовить после работы.',
-    image: 'images/teriyaki-rice.svg',
+    image: RECIPE_IMAGE_URLS.teriyakiChicken,
     accent: 'citrus',
     badge: 'Подборка редакции',
   },
   {
     title: 'Клуб неспешных супов',
     description: 'Густые супы, кремовые текстуры и долгие выходные на кухне без суеты.',
-    image: 'images/pumpkin-soup.svg',
+    image: RECIPE_IMAGE_URLS.pumpkinSoup,
     accent: 'herb',
     badge: 'Для прохладных дней',
   },
   {
     title: 'Сладкая пауза',
     description: 'Небольшие сладкие проекты, когда хочется собрать красивую тарелку и выдохнуть.',
-    image: 'images/cheesecake.svg',
+    image: RECIPE_IMAGE_URLS.cheesecake,
     accent: 'berry',
     badge: 'Любимый формат',
   },

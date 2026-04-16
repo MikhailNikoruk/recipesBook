@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AssetUrlService } from '../../core/services/asset-url.service';
+import { RECIPE_IMAGE_URLS } from '../../data/recipe-images';
 import { RecipeRepositoryService } from '../../core/services/recipe-repository.service';
 import { CategoryCardComponent } from '../../shared/components/category-card/category-card.component';
 import { CollectionBannerComponent } from '../../shared/components/collection-banner/collection-banner.component';
@@ -45,6 +46,7 @@ export class HomePageComponent {
   private readonly assetUrlService = inject(AssetUrlService);
   private readonly recipeRepository = inject(RecipeRepositoryService);
 
+  protected readonly recipeImages = RECIPE_IMAGE_URLS;
   protected readonly heroQuery = signal('');
   protected readonly loading = signal(true);
   protected readonly popularRecipes = this.recipeRepository.getPopular(4);
@@ -63,28 +65,28 @@ export class HomePageComponent {
       eyebrow: 'Завтраки',
       title: 'Утро без перегруза',
       description: 'Плотные, но быстрые рецепты, с которых удобно начинать день.',
-      image: 'images/shakshuka.svg',
+      image: RECIPE_IMAGE_URLS.shakshuka,
       queryParams: { category: 'breakfast' },
     },
     {
       eyebrow: 'Супы',
       title: 'Тёплые тарелки',
       description: 'Кремовые и бульонные супы, когда нужна понятная уютная еда.',
-      image: 'images/pumpkin-soup.svg',
+      image: RECIPE_IMAGE_URLS.pumpkinSoup,
       queryParams: { category: 'soup' },
     },
     {
       eyebrow: 'Основное',
       title: 'Будничные ужины',
       description: 'Паста, рис и другие рабочие блюда, которые не требуют лишней суеты.',
-      image: 'images/mushroom-pasta.svg',
+      image: RECIPE_IMAGE_URLS.mushroomPasta,
       queryParams: { category: 'main' },
     },
     {
       eyebrow: 'Мясо и рыба',
       title: 'Центр тарелки',
       description: 'Блюда, где главный ингредиент задаёт характер всей подаче.',
-      image: 'images/honey-salmon.svg',
+      image: RECIPE_IMAGE_URLS.salmon,
       queryParams: { category: 'fish' },
     },
   ];
@@ -93,14 +95,14 @@ export class HomePageComponent {
       eyebrow: 'Подборка недели',
       title: 'Ужин после работы',
       description: 'Рецепты с чётким вкусом и понятной логикой приготовления: открыть, выбрать, приготовить.',
-      image: 'images/teriyaki-rice.svg',
+      image: RECIPE_IMAGE_URLS.teriyakiChicken,
       queryParams: { maxCookingTime: 45, format: 'food' },
     },
     {
       eyebrow: 'Лёгкий режим',
       title: 'Свежие салаты и напитки',
       description: 'Когда хочется чего-то легче: быстрые салаты, лимонады и мягкие по калорийности рецепты.',
-      image: 'images/greek-salad.svg',
+      image: RECIPE_IMAGE_URLS.greekSalad,
       queryParams: { diet: 'light' },
     },
   ];

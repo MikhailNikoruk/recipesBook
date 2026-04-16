@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AssetUrlService } from '../../core/services/asset-url.service';
+import { RECIPE_IMAGE_URLS } from '../../data/recipe-images';
 import { CategoryCardComponent } from '../../shared/components/category-card/category-card.component';
 
 interface CategoryEntry {
@@ -79,42 +80,42 @@ export class CategoriesPageComponent {
       eyebrow: 'Завтраки',
       title: 'Быстрый и плотный старт дня',
       description: 'Когда нужен понятный завтрак без длинной подготовки.',
-      image: 'images/shakshuka.svg',
+      image: RECIPE_IMAGE_URLS.shakshuka,
       queryParams: { category: 'breakfast' },
     },
     {
       eyebrow: 'Супы',
       title: 'Тёплые глубокие вкусы',
       description: 'Крем-супы и бульоны для спокойного обеда или ужина.',
-      image: 'images/pumpkin-soup.svg',
+      image: RECIPE_IMAGE_URLS.pumpkinSoup,
       queryParams: { category: 'soup' },
     },
     {
       eyebrow: 'Основное',
       title: 'Рабочие блюда на каждый день',
       description: 'Паста, рис и понятные ужины, которые хочется повторять.',
-      image: 'images/mushroom-pasta.svg',
+      image: RECIPE_IMAGE_URLS.mushroomPasta,
       queryParams: { category: 'main' },
     },
     {
       eyebrow: 'Мясо',
       title: 'Фокус на главный продукт',
       description: 'Стейки и плотные мясные блюда с ясной подачей.',
-      image: 'images/beef-steak.svg',
+      image: RECIPE_IMAGE_URLS.beefSteak,
       queryParams: { category: 'meat' },
     },
     {
       eyebrow: 'Рыба',
       title: 'Лёгкая, но выразительная подача',
       description: 'Рецепты, где рыба остаётся центральным героем тарелки.',
-      image: 'images/honey-salmon.svg',
+      image: RECIPE_IMAGE_URLS.salmon,
       queryParams: { category: 'fish' },
     },
     {
       eyebrow: 'Салаты и десерты',
       title: 'Свежие и финальные акценты',
       description: 'Лёгкие салаты, десерты и напитки для завершения меню.',
-      image: 'images/greek-salad.svg',
+      image: RECIPE_IMAGE_URLS.greekSalad,
       queryParams: { category: 'salad' },
     },
   ];

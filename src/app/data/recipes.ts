@@ -1,10 +1,11 @@
 import { Recipe } from '../models/recipe.model';
+import { RECIPE_IMAGE_URLS } from './recipe-images';
 
 export const RECIPES: readonly Recipe[] = [
   {
     id: 1,
     name: 'Шакшука с томатами и фетой',
-    image: 'images/shakshuka.svg',
+    image: RECIPE_IMAGE_URLS.shakshuka,
     description:
       'Сытный израильский завтрак: яйца томятся в пряном томатном соусе, а фета добавляет солоноватый акцент.',
     category: 'breakfast',
@@ -37,7 +38,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 2,
     name: 'Тыквенный крем-суп с имбирём',
-    image: 'images/pumpkin-soup.svg',
+    image: RECIPE_IMAGE_URLS.pumpkinSoup,
     description:
       'Нежный осенний суп с бархатной текстурой, лёгкой сладостью тыквы и свежим согревающим имбирём.',
     category: 'soup',
@@ -68,7 +69,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 3,
     name: 'Курица терияки с жасминовым рисом',
-    image: 'images/teriyaki-rice.svg',
+    image: RECIPE_IMAGE_URLS.teriyakiChicken,
     description:
       'Сбалансированное основное блюдо с карамельной глазировкой, сочной курицей и свежими овощами.',
     category: 'main',
@@ -100,7 +101,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 4,
     name: 'Лимонный чизкейк без выпечки',
-    image: 'images/cheesecake.svg',
+    image: RECIPE_IMAGE_URLS.cheesecake,
     description:
       'Освежающий десерт с ярким цитрусовым вкусом, сливочной начинкой и хрустящей основой из печенья.',
     category: 'dessert',
@@ -131,7 +132,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 5,
     name: 'Холодный матча-латте',
-    image: 'images/matcha-latte.svg',
+    image: RECIPE_IMAGE_URLS.matchaLatte,
     description:
       'Освежающий напиток с мягкой травяной горчинкой, воздушной пенкой и быстрым способом приготовления.',
     category: 'drink',
@@ -159,7 +160,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 6,
     name: 'Пряный безалкогольный глинтвейн',
-    image: 'images/mulled-drink.svg',
+    image: RECIPE_IMAGE_URLS.mulledWine,
     description:
       'Тёплый зимний напиток на виноградном соке с апельсином, корицей и насыщенным пряным ароматом.',
     category: 'drink',
@@ -189,7 +190,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 7,
     name: 'Домашний мисо-рамен',
-    image: 'images/ramen.svg',
+    image: RECIPE_IMAGE_URLS.ramen,
     description:
       'Глубокий насыщенный вкус, многослойный бульон и несколько этапов подготовки делают этот рецепт настоящим проектом выходного дня.',
     category: 'soup',
@@ -222,7 +223,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 8,
     name: 'Шоколадный брауни с орехами',
-    image: 'images/brownie.svg',
+    image: RECIPE_IMAGE_URLS.brownie,
     description:
       'Плотный влажный брауни с насыщенным вкусом какао, хрустящими орехами и выразительной шоколадной корочкой.',
     category: 'dessert',
@@ -253,7 +254,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 9,
     name: 'Овсяная каша с карамелизированной грушей',
-    image: 'images/oatmeal-pear.svg',
+    image: RECIPE_IMAGE_URLS.oatmeal,
     description:
       'Тёплый завтрак с мягкой овсяной текстурой, сливочным вкусом и сладкой грушей с корицей.',
     category: 'breakfast',
@@ -282,7 +283,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 10,
     name: 'Куриный суп с домашней лапшой',
-    image: 'images/chicken-noodle-soup.svg',
+    image: RECIPE_IMAGE_URLS.chickenNoodleSoup,
     description:
       'Простой и насыщенный суп с прозрачным бульоном, овощами и мягкой лапшой для уютного обеда.',
     category: 'soup',
@@ -313,7 +314,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 11,
     name: 'Паста альфредо с грибами',
-    image: 'images/mushroom-pasta.svg',
+    image: RECIPE_IMAGE_URLS.mushroomPasta,
     description:
       'Кремовая паста для буднего вечера: сливочный соус, жареные грибы и насыщенный вкус пармезана.',
     category: 'main',
@@ -343,7 +344,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 12,
     name: 'Стейк из говядины с розмариновым маслом',
-    image: 'images/beef-steak.svg',
+    image: RECIPE_IMAGE_URLS.beefSteak,
     description:
       'Плотное мясное блюдо с хрустящей корочкой, сочной серединой и ароматным маслом с розмарином.',
     category: 'meat',
@@ -372,7 +373,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 13,
     name: 'Лосось в медово-горчичной глазури',
-    image: 'images/honey-salmon.svg',
+    image: RECIPE_IMAGE_URLS.salmon,
     description:
       'Нежная рыба с блестящей глазурью, лёгкой сладостью и ярким цитрусовым послевкусием.',
     category: 'fish',
@@ -401,7 +402,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 14,
     name: 'Греческий салат с оливками и фетой',
-    image: 'images/greek-salad.svg',
+    image: RECIPE_IMAGE_URLS.greekSalad,
     description:
       'Сочный овощной салат с яркой солёной фетой, маслинами и лёгкой орегано-заправкой.',
     category: 'salad',
@@ -431,7 +432,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 15,
     name: 'Тирамису в стаканах',
-    image: 'images/tiramisu-cups.svg',
+    image: RECIPE_IMAGE_URLS.tiramisu,
     description:
       'Лёгкий порционный десерт с кофейным сиропом, кремом из маскарпоне и слоем какао сверху.',
     category: 'dessert',
@@ -460,7 +461,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 16,
     name: 'Апельсиновый лимонад с мятой',
-    image: 'images/orange-lemonade.svg',
+    image: RECIPE_IMAGE_URLS.orangeLemonade,
     description:
       'Яркий прохладный напиток с цитрусом, свежей мятой и лёгкой искристой текстурой.',
     category: 'drink',
