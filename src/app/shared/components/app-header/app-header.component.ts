@@ -42,10 +42,20 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
 
         <div class="app-header__actions">
           <a class="app-header__icon-button" routerLink="/recipes" aria-label="Открыть поиск">
-            <span aria-hidden="true">⌕</span>
+            <svg class="app-header__icon-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="5.5" stroke="currentColor" stroke-width="2.2" />
+              <path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
           </a>
           <a class="app-header__icon-button app-header__icon-button--favorite" routerLink="/favorites" aria-label="Открыть избранное">
-            <span aria-hidden="true">♡</span>
+            <svg class="app-header__icon-svg app-header__icon-svg--favorite" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 20.4 10.6 19.15C5.6 14.68 2.5 11.9 2.5 8.5 2.5 5.72 4.68 3.5 7.45 3.5c1.57 0 3.08.73 4.05 1.89A5.32 5.32 0 0 1 15.55 3.5c2.77 0 4.95 2.22 4.95 5 0 3.4-3.1 6.18-8.1 10.65L12 20.4Z"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linejoin="round"
+              />
+            </svg>
             @if (favoriteCount() > 0) {
               <span class="app-header__favorite-count">{{ favoriteCount() }}</span>
             }
@@ -145,6 +155,17 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
         background: var(--header-icon-bg);
         color: var(--text-primary);
         font-size: 1.1rem;
+      }
+
+      .app-header__icon-svg {
+        width: 1.35rem;
+        height: 1.35rem;
+        flex: 0 0 auto;
+      }
+
+      .app-header__icon-svg--favorite {
+        width: 1.45rem;
+        height: 1.45rem;
       }
 
       .app-header__favorite-count {

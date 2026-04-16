@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
         <span>{{ eyebrow() }}</span>
         <h3>{{ title() }}</h3>
         <p>{{ description() }}</p>
-        <a [routerLink]="routerLink()" [queryParams]="queryParams()">{{ linkLabel() }}</a>
+        <a class="collection-banner__link" [routerLink]="routerLink()" [queryParams]="queryParams()">{{ linkLabel() }}</a>
       </div>
     </article>
   `,
@@ -56,11 +56,34 @@ import { RouterLink } from '@angular/router';
         line-height: 1.65;
       }
 
-      .collection-banner__content a {
+      .collection-banner__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: fit-content;
         margin-top: 0.35rem;
-        color: var(--primary-active);
+        min-height: 2.75rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--button-primary-border);
+        border-radius: 999px;
+        background: var(--button-secondary-bg);
+        color: var(--text-primary);
         font-weight: 800;
+        transition:
+          background-color 180ms ease,
+          border-color 180ms ease,
+          color 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+
+      .collection-banner__link:hover,
+      .collection-banner__link:focus-visible {
+        transform: translateY(-1px);
+        background: linear-gradient(135deg, var(--button-primary-bg) 0%, var(--button-primary-hover) 100%);
+        border-color: var(--button-primary-bg-hover);
+        color: var(--button-primary-text-hover);
+        box-shadow: var(--shadow-sm);
       }
 
       @media (max-width: 760px) {
