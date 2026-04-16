@@ -1,5 +1,6 @@
 .recipe-card {
   display: grid;
+  height: 100%;
   overflow: hidden;
   border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
@@ -19,8 +20,10 @@
 }
 
 .recipe-card__content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.95rem;
+  min-height: 100%;
   padding: 1.25rem;
 }
 
@@ -32,11 +35,15 @@
 }
 
 .recipe-card__category {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--chip-border);
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 700;
+  line-height: 1.1;
   background: var(--tag-category-bg);
   color: var(--tag-category-text);
 }
@@ -49,6 +56,10 @@
 .recipe-card__heading h3 {
   font-size: 1.58rem;
   line-height: 1.04;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .recipe-card__heading p {
@@ -64,9 +75,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  align-items: flex-start;
 }
 
 .recipe-card__meta-row span {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   padding: 0.45rem 0.7rem;
   border: 1px solid var(--chip-border);
   border-radius: 999px;
@@ -74,41 +89,55 @@
   color: var(--tag-time-text);
   font-size: 0.84rem;
   font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .recipe-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  align-items: flex-start;
 }
 
 .recipe-card__tags span {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
   background: var(--tag-category-bg);
   color: var(--primary-active);
   font-size: 0.82rem;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 .recipe-card__diet {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  align-items: flex-start;
 }
 
 .recipe-card__diet span {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
   background: var(--tag-diet-bg);
   color: var(--tag-diet-text);
   font-size: 0.82rem;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 .recipe-card__actions {
   display: flex;
   justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 0.25rem;
 }
 
 .recipe-card__link {

@@ -10,7 +10,9 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
     <header class="app-header">
       <div class="app-header__shell page-section">
         <a class="app-header__brand" routerLink="/">
-          <img class="app-header__logo" src="images/bookbites-logo.svg" alt="Логотип BookBites">
+          <span class="app-header__logo-frame" aria-hidden="true">
+            <img class="app-header__logo" src="images/bookbites-logo.svg" alt="Логотип BookBites">
+          </span>
           <span class="app-header__brand-copy">
             <strong>BookBites</strong>
             <small>Каталог блюд и напитков</small>
@@ -90,30 +92,43 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
       .app-header__brand {
         display: inline-flex;
         align-items: center;
-        gap: 0.8rem;
+        gap: 0.95rem;
         min-width: 0;
       }
 
-      .app-header__logo {
-        width: 2.75rem;
-        height: 2.75rem;
-        object-fit: contain;
+      .app-header__logo-frame {
+        display: inline-grid;
+        place-items: center;
+        width: 4.15rem;
+        height: 4.15rem;
         flex: 0 0 auto;
+        border: 1px solid var(--card-border);
+        border-radius: 1.35rem;
+        background:
+          linear-gradient(180deg, var(--surface-elevated) 0%, var(--surface-strong) 100%);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .app-header__logo {
+        width: 3.3rem;
+        height: 3.3rem;
+        object-fit: contain;
       }
 
       .app-header__brand-copy {
         display: grid;
-        gap: 0.15rem;
+        gap: 0.2rem;
         min-width: 0;
       }
 
       .app-header__brand-copy strong {
-        font-size: 1rem;
+        font-size: 1.08rem;
+        letter-spacing: -0.01em;
       }
 
       .app-header__brand-copy small {
         color: var(--text-secondary);
-        font-size: 0.8rem;
+        font-size: 0.82rem;
       }
 
       .app-header__nav {
@@ -197,6 +212,17 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
       }
 
       @media (max-width: 640px) {
+        .app-header__logo-frame {
+          width: 3.7rem;
+          height: 3.7rem;
+          border-radius: 1.15rem;
+        }
+
+        .app-header__logo {
+          width: 3rem;
+          height: 3rem;
+        }
+
         .app-header__cta {
           width: auto;
         }
