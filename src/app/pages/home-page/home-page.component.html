@@ -1,64 +1,133 @@
-<section class="home-page__hero page-section glass-panel">
-  <div class="home-page__hero-copy">
-    <p class="section-heading__eyebrow">Angular 21 Recipe SPA</p>
-    <h1>Книга рецептов для блюд и напитков</h1>
+<section class="home-page__hero page-section app-grid">
+  <div class="home-page__hero-copy glass-panel">
+    <p class="section-heading__eyebrow">Поиск по рецептам без лишнего шума</p>
+    <h1 class="display-serif">Находите блюда быстрее и выбирайте как в хорошем каталоге еды</h1>
     <p class="home-page__hero-text">
-      Удобный каталог с фильтрами, подробными карточками и аккуратной standalone-архитектурой.
-      Проект показывает production-style подход к учебному Angular SPA.
+      Здесь проще искать по времени, категориям и ингредиентам, а сами рецепты выглядят как
+      полноценный продуктовый каталог: понятно, чисто и с акцентом на еду.
     </p>
 
-    <div class="home-page__actions">
-      <a class="button-link" routerLink="/recipes">Смотреть каталог</a>
-      <a class="button-link button-link--secondary" routerLink="/about">Как устроен проект</a>
-    </div>
+    <app-search-bar
+      [value]="heroQuery()"
+      (valueChange)="heroQuery.set($event)"
+      (submitted)="openSearch($event)"
+      placeholder="Например, лосось, суп, десерт или лимон"
+      buttonLabel="Найти"
+    />
 
-    <ul class="pill-list">
-      <li>8 рецептов</li>
-      <li>Блюда и напитки</li>
-      <li>Live-фильтрация</li>
-      <li>Standalone only</li>
-    </ul>
+    <app-filter-chips [chips]="quickChips" (chipSelected)="applyQuickChip($event)" />
+
+    <div class="home-page__hero-actions">
+      <a class="button-link" routerLink="/recipes">Смотреть рецепты</a>
+      <button type="button" class="button-link button-link--secondary" (click)="openRandomRecipe()">
+        Случайный рецепт
+      </button>
+    </div>
   </div>
 
-  <div class="home-page__stats">
-    <app-info-badge label="Рецептов" [value]="totalRecipes" tone="warm" />
-    <app-info-badge label="Напитков" [value]="totalDrinks" tone="accent" />
-    <app-info-badge label="Среднее время" [value]="averageTime" />
+  <div class="home-page__hero-visual glass-panel">
+    <img [src]="resolveAsset('images/teriyaki-rice.svg')" alt="Главное блюдо в редакционной подаче">
+    <article class="home-page__featured-card">
+      <span>Рецепт дня</span>
+      <strong>Лосось в медово-горчичной глазури</strong>
+      <p>25 минут, мягкая глазурь, хороший баланс между праздничной подачей и обычным ужином.</p>
+      <a routerLink="/recipes/13">Открыть рецепт</a>
+    </article>
   </div>
 </section>
 
 <section class="home-page__section page-section">
   <div class="section-heading">
-    <p class="section-heading__eyebrow">Избранное</p>
-    <h2>С чего начать</h2>
-    <p class="section-heading__text">
-      На главной собраны рецепты, которые хорошо показывают разные типы контента: быстрый завтрак,
-      основное блюдо и десерт.
-    </p>
-    @if (lastOpenedRecipeId(); as openedRecipeId) {
-      <p class="section-heading__text">Последний открытый рецепт из блока: #{{ openedRecipeId }}</p>
-    }
+    <p class="section-heading__eyebrow">Популярное</p>
+    <h2>Сейчас чаще всего открывают</h2>
   </div>
 
-  <div class="recipe-grid">
-    @for (recipe of featuredRecipes; track recipe.id) {
-      <app-recipe-card [recipe]="recipe" (detailsRequested)="rememberOpenedRecipe($event)" />
+  @if (loading()) {
+    <div class="recipe-grid">
+      @for (placeholder of [1, 2, 3, 4]; track placeholder) {
+        <app-skeleton-card />
+      }
+    </div>
+  } @else {
+    <div class="recipe-grid">
+      @for (recipe of popularRecipes; track recipe.id) {
+        <app-recipe-card [recipe]="recipe" />
+      }
+    </div>
+  }
+</section>
+
+<section class="home-page__section page-section">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">Категории</p>
+    <h2>Переходите в нужный раздел без долгого скролла</h2>
+  </div>
+
+  <div class="home-page__categories">
+    @for (category of categories; track category.title) {
+      <app-category-card
+        [eyebrow]="category.eyebrow"
+        [title]="category.title"
+        [description]="category.description"
+        [image]="resolveAsset(category.image)"
+        routerLink="/recipes"
+        [queryParams]="category.queryParams"
+      />
     }
   </div>
 </section>
 
-<section class="home-page__section page-section glass-panel home-page__highlights">
+<section class="home-page__section page-section">
   <div class="section-heading">
-    <p class="section-heading__eyebrow">Архитектура</p>
-    <h2>Что реализовано в приложении</h2>
+    <p class="section-heading__eyebrow">Подборки</p>
+    <h2>Кураторские сценарии выбора</h2>
   </div>
 
-  <div class="home-page__highlight-list">
-    @for (highlight of highlights; track highlight.title) {
-      <article class="home-page__highlight-card">
-        <h3>{{ highlight.title }}</h3>
-        <p>{{ highlight.description }}</p>
-      </article>
+  <div class="home-page__collections">
+    @for (collection of collections; track collection.title) {
+      <app-collection-banner
+        [eyebrow]="collection.eyebrow"
+        [title]="collection.title"
+        [description]="collection.description"
+        [image]="resolveAsset(collection.image)"
+        routerLink="/recipes"
+        [queryParams]="collection.queryParams"
+        linkLabel="Перейти в каталог"
+      />
     }
   </div>
+</section>
+
+<section class="home-page__section page-section">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">Новые рецепты</p>
+    <h2>Последние добавления в книгу</h2>
+  </div>
+
+  @if (loading()) {
+    <div class="recipe-grid">
+      @for (placeholder of [1, 2, 3, 4]; track placeholder) {
+        <app-skeleton-card />
+      }
+    </div>
+  } @else {
+    <div class="recipe-grid">
+      @for (recipe of newRecipes; track recipe.id) {
+        <app-recipe-card [recipe]="recipe" />
+      }
+    </div>
+  }
+</section>
+
+<section class="home-page__section page-section glass-panel home-page__about">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">О проекте</p>
+    <h2>Кулинарный SPA с логикой каталога</h2>
+    <p class="section-heading__text">
+      В основе всё ещё строгий Angular-проект со standalone-компонентами и typed-моделью, но
+      теперь приоритет смещён в сторону discovery, фильтрации, карточек рецептов и сценария выбора.
+    </p>
+  </div>
+
+  <a class="button-link button-link--secondary" routerLink="/about">Подробнее об архитектуре</a>
 </section>

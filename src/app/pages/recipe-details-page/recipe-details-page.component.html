@@ -1,79 +1,135 @@
 @if (recipe(); as currentRecipe) {
-  <section class="recipe-details page-section glass-panel">
-    <img class="recipe-details__image" [src]="imageUrl()" [alt]="currentRecipe.name">
+  <section class="recipe-hero page-section">
+    <div class="recipe-hero__media">
+      <img class="recipe-hero__image" [src]="imageUrl()" [alt]="currentRecipe.name">
+    </div>
 
-    <div class="recipe-details__content">
-      <div class="recipe-details__meta">
-        <span class="recipe-details__category">{{ categoryLabels[currentRecipe.category] }}</span>
-        <span class="recipe-details__difficulty" [appRecipeDifficultyColor]="currentRecipe.difficulty">
+    <div class="recipe-hero__content glass-panel">
+      <div class="recipe-hero__meta">
+        <span class="recipe-hero__category">{{ categoryLabels[currentRecipe.category] }}</span>
+        <span class="recipe-hero__difficulty" [appRecipeDifficultyColor]="currentRecipe.difficulty">
           {{ difficultyLabels[currentRecipe.difficulty] }}
         </span>
       </div>
 
-      <div class="recipe-details__intro">
-        <h1>{{ currentRecipe.name }}</h1>
+      <div class="recipe-hero__copy">
+        <p class="recipe-hero__eyebrow">Карточка рецепта</p>
+        <h1 class="display-serif">{{ currentRecipe.name }}</h1>
         <p>{{ currentRecipe.description }}</p>
       </div>
 
-      <div class="recipe-details__badges">
-        <app-info-badge label="Время" [value]="currentRecipe.cookingTime | cookingTime" tone="warm" />
-        <app-info-badge label="Порции" [value]="currentRecipe.servings + ' порц.'" />
-        <app-info-badge
-          label="Формат"
-          [value]="currentRecipe.isDrink ? 'Напиток' : 'Блюдо'"
-          tone="accent"
-        />
+      <div class="recipe-hero__stats">
+        <article>
+          <span>Время</span>
+          <strong>{{ currentRecipe.cookingTime | cookingTime }}</strong>
+        </article>
+        <article>
+          <span>Порции</span>
+          <strong>{{ currentRecipe.servings }}</strong>
+        </article>
+        <article>
+          <span>Калории</span>
+          <strong>{{ currentRecipe.calories }} ккал</strong>
+        </article>
       </div>
 
-      <div class="recipe-details__tags">
+      <div class="recipe-hero__tags">
         @for (tag of currentRecipe.tags; track tag) {
           <span>{{ tag }}</span>
         }
+        @for (diet of currentRecipe.diet; track diet) {
+          <span>{{ dietLabels[diet] }}</span>
+        }
       </div>
+
+      <div class="recipe-hero__actions">
+        <app-favorite-button [recipeId]="currentRecipe.id" />
+        <button type="button" class="recipe-hero__action" (click)="shareRecipe()">Поделиться</button>
+        <button type="button" class="recipe-hero__action" (click)="printRecipe()">Печать</button>
+        <a class="recipe-hero__action recipe-hero__action--link" routerLink="/recipes">К каталогу</a>
+      </div>
+
+      @if (shareMessage(); as feedback) {
+        <p class="recipe-hero__feedback">{{ feedback }}</p>
+      }
     </div>
   </section>
 
-  <section class="recipe-details__body page-section">
-    <article class="recipe-details__panel glass-panel">
-      <h2>Ингредиенты</h2>
-      <ul class="recipe-details__list">
-        @for (ingredient of currentRecipe.ingredients; track ingredient) {
-          <li>{{ ingredient }}</li>
-        }
-      </ul>
-    </article>
+  <section class="recipe-layout page-section">
+    <aside class="recipe-panel glass-panel">
+      <div class="recipe-panel__header">
+        <div>
+          <p class="recipe-panel__eyebrow">Ингредиенты</p>
+          <h2>Подготовьте всё заранее</h2>
+        </div>
+        <span>{{ checkedIngredients().length }}/{{ currentRecipe.ingredients.length }}</span>
+      </div>
 
-    <article class="recipe-details__panel glass-panel">
-      <h2>Пошаговое приготовление</h2>
-      <ol class="recipe-details__steps">
+      <div class="recipe-ingredients">
+        @for (ingredient of currentRecipe.ingredients; track ingredient) {
+          <label class="recipe-ingredient" [class.recipe-ingredient--checked]="isIngredientChecked(ingredient)">
+            <input
+              #ingredientCheckbox
+              type="checkbox"
+              [checked]="isIngredientChecked(ingredient)"
+              (change)="toggleIngredient(ingredient, ingredientCheckbox.checked)"
+            >
+            <span>{{ ingredient }}</span>
+          </label>
+        }
+      </div>
+    </aside>
+
+    <article class="recipe-panel glass-panel">
+      <div class="recipe-panel__header">
+        <div>
+          <p class="recipe-panel__eyebrow">Шаг за шагом</p>
+          <h2>Как приготовить без лишней спешки</h2>
+        </div>
+      </div>
+
+      <ol class="recipe-steps">
         @for (step of currentRecipe.steps; track step; let stepIndex = $index) {
-          <li>
-            <span>{{ stepIndex + 1 }}</span>
-            <p>{{ step }}</p>
+          <li class="recipe-step">
+            <span class="recipe-step__index">{{ stepIndex + 1 }}</span>
+            <div>
+              <strong>Шаг {{ stepIndex + 1 }}</strong>
+              <p>{{ step }}</p>
+            </div>
           </li>
         }
       </ol>
     </article>
   </section>
 
-  @if (relatedRecipes().length > 0) {
-    <section class="recipe-details__related page-section">
-      <div class="section-heading">
-        <p class="section-heading__eyebrow">Ещё идеи</p>
-        <h2>Похожие рецепты</h2>
-      </div>
+  @if (relatedRecipes(); as related) {
+    @if (related.length > 0) {
+      <section class="recipe-related page-section">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">Похожие рецепты</p>
+          <h2 class="display-serif">Продолжите подборку</h2>
+          <p class="section-heading__text">
+            Мы подобрали ещё несколько рецептов со схожим характером вкуса и форматом подачи.
+          </p>
+        </div>
 
-      <div class="recipe-grid">
-        @for (relatedRecipe of relatedRecipes(); track relatedRecipe.id) {
-          <app-recipe-card [recipe]="relatedRecipe" />
-        }
-      </div>
-    </section>
+        <div class="recipe-related__grid">
+          @for (relatedRecipe of related; track relatedRecipe.id) {
+            <app-recipe-card [recipe]="relatedRecipe" />
+          }
+        </div>
+      </section>
+    }
   }
 } @else {
-  <section class="page-section empty-state glass-panel">
-    <h1>Рецепт не найден</h1>
-    <p>Похоже, такого идентификатора нет в каталоге. Вернитесь к списку и выберите карточку из книги.</p>
-    <a class="button-link" routerLink="/recipes">К каталогу</a>
+  <section class="page-section">
+    <div class="recipe-missing glass-panel">
+      <h1 class="display-serif">Рецепт не найден</h1>
+      <p>
+        Похоже, этот идентификатор больше не используется. Вернитесь в каталог и выберите рецепт из
+        доступной коллекции.
+      </p>
+      <a class="button-link" routerLink="/recipes">Перейти к каталогу</a>
+    </div>
   </section>
 }

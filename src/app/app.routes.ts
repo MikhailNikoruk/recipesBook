@@ -17,6 +17,20 @@ export const routes: Routes = [
           import('./pages/recipes-page/recipes-page.component').then((m) => m.RecipesPageComponent),
       },
       {
+        path: 'categories',
+        loadComponent: () =>
+          import('./pages/categories-page/categories-page.component').then(
+            (m) => m.CategoriesPageComponent,
+          ),
+      },
+      {
+        path: 'favorites',
+        loadComponent: () =>
+          import('./pages/favorites-page/favorites-page.component').then(
+            (m) => m.FavoritesPageComponent,
+          ),
+      },
+      {
         path: 'recipes/:id',
         loadComponent: () =>
           import('./pages/recipe-details-page/recipe-details-page.component').then(

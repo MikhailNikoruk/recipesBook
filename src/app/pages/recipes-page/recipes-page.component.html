@@ -1,36 +1,123 @@
-<section class="recipes-page__hero page-section">
-  <div class="section-heading">
-    <p class="section-heading__eyebrow">Каталог</p>
-    <h1>Рецепты на каждый день</h1>
-    <p class="section-heading__text">
-      Ищите блюда по названию, типу, сложности и времени приготовления. Фильтрация работает
-      мгновенно, без перезагрузки страницы.
+<section class="catalog-hero page-section">
+  <div class="catalog-hero__copy">
+    <p class="catalog-hero__eyebrow">Каталог рецептов</p>
+    <h1 class="display-serif">Найдите рецепт под настроение, время и набор продуктов</h1>
+    <p class="catalog-hero__text">
+      Каталог теперь работает как полноценный food-product интерфейс: поиск наверху, фильтры под рукой,
+      сортировка, избранное и два режима просмотра.
     </p>
   </div>
+
+  <div class="catalog-hero__stats">
+    <article>
+      <strong>{{ allRecipes.length }}</strong>
+      <span>рецептов в каталоге</span>
+    </article>
+    <article>
+      <strong>{{ favoriteCount() }}</strong>
+      <span>в избранном сейчас</span>
+    </article>
+    <article>
+      <strong>{{ filteredRecipes().length }}</strong>
+      <span>совпадений по текущим фильтрам</span>
+    </article>
+  </div>
 </section>
 
-<section class="recipes-page__content page-section">
-  <app-filter-panel [filters]="filters()" (filtersChange)="updateFilters($event)" />
+<section class="catalog-layout page-section">
+  <aside class="catalog-layout__sidebar">
+    <app-sidebar-filters [filters]="filters()" (filtersChange)="updateFilters($event)" (resetRequested)="resetFilters()" />
+  </aside>
 
-  <div class="recipes-page__summary">
-    <strong>Найдено: {{ filteredRecipes().length }}</strong>
-    <span>Всего рецептов в книге: {{ allRecipes.length }}</span>
-    @if (lastOpenedRecipeId(); as openedRecipeId) {
-      <span>Последний открытый рецепт: #{{ openedRecipeId }}</span>
+  <div class="catalog-layout__content">
+    <section class="catalog-toolbar glass-panel">
+      <div class="catalog-toolbar__search">
+        <app-search-bar
+          [value]="search()"
+          placeholder="Найти по названию, тегу или ингредиенту"
+          buttonLabel="Искать"
+          (valueChange)="updateSearch($event)"
+          (submitted)="commitSearch($event)"
+        />
+      </div>
+
+      <div class="catalog-toolbar__controls">
+        <div class="catalog-toolbar__meta">
+          <strong>{{ filteredRecipes().length }} рецептов</strong>
+          <span>из {{ allRecipes.length }} доступных</span>
+        </div>
+
+        <button type="button" class="catalog-toolbar__mobile-button" (click)="openMobileFilters()">
+          Фильтры
+        </button>
+
+        <app-sort-select [value]="sort()" [options]="sortOptions" (valueChange)="updateSort($event)" />
+
+        <div class="catalog-toolbar__view-switch" aria-label="Режим просмотра">
+          <button
+            type="button"
+            [class.catalog-toolbar__view-switch-button--active]="viewMode() === 'grid'"
+            (click)="updateViewMode('grid')"
+          >
+            Сетка
+          </button>
+          <button
+            type="button"
+            [class.catalog-toolbar__view-switch-button--active]="viewMode() === 'list'"
+            (click)="updateViewMode('list')"
+          >
+            Список
+          </button>
+        </div>
+      </div>
+    </section>
+
+    @if (activeFilterPills(); as pills) {
+      @if (pills.length > 0) {
+        <section class="catalog-active-filters">
+          <div class="catalog-active-filters__list">
+            @for (pill of pills; track pill.id) {
+              <button type="button" class="catalog-active-filters__pill" (click)="removeFilter(pill.id)">
+                <span>{{ pill.label }}</span>
+                <span aria-hidden="true">×</span>
+              </button>
+            }
+          </div>
+
+          <button type="button" class="catalog-active-filters__reset" (click)="resetFilters()">
+            Сбросить фильтры
+          </button>
+        </section>
+      }
+    }
+
+    @if (loading()) {
+      <div class="catalog-results" [class.catalog-results--list]="viewMode() === 'list'">
+        @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
+          <app-skeleton-card [viewMode]="viewMode()" />
+        }
+      </div>
+    } @else if (filteredRecipes().length > 0) {
+      <div class="catalog-results" [class.catalog-results--list]="viewMode() === 'list'">
+        @for (recipe of filteredRecipes(); track recipe.id) {
+          <app-recipe-card [recipe]="recipe" [viewMode]="viewMode()" />
+        }
+      </div>
+    } @else {
+      <app-empty-state
+        title="Рецепты по таким параметрам не найдены"
+        message="Попробуйте убрать часть фильтров, сократить поисковую фразу или сбросить каталог к стартовому состоянию."
+        actionLabel="Сбросить фильтры"
+        (action)="resetFilters()"
+      />
     }
   </div>
-
-  @if (filteredRecipes().length > 0) {
-    <div class="recipe-grid">
-      @for (recipe of filteredRecipes(); track recipe.id) {
-        <app-recipe-card [recipe]="recipe" (detailsRequested)="rememberOpenedRecipe($event)" />
-      }
-    </div>
-  } @else {
-    <div class="empty-state glass-panel">
-      <h2>Ничего не найдено</h2>
-      <p>Попробуйте убрать часть ограничений или очистите форму фильтров.</p>
-      <button type="button" class="button-link" (click)="resetFilters()">Сбросить фильтры</button>
-    </div>
-  }
 </section>
+
+<app-mobile-filter-drawer
+  [open]="mobileFiltersOpen()"
+  [filters]="filters()"
+  (filtersChange)="updateFilters($event)"
+  (resetRequested)="resetFilters()"
+  (closeRequested)="closeMobileFilters()"
+/>

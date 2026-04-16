@@ -1,0 +1,74 @@
+<aside class="sidebar-filters">
+  <div class="sidebar-filters__header">
+    <div>
+      <p class="sidebar-filters__eyebrow">Фильтры</p>
+      <h2>Настройка каталога</h2>
+    </div>
+    <button type="button" class="sidebar-filters__reset" (click)="reset()">Сбросить</button>
+  </div>
+
+  <label class="sidebar-filters__field">
+    <span>Тип блюда</span>
+    <select [(ngModel)]="draft.category" (ngModelChange)="applyChanges()" name="category">
+      <option value="all">Все категории</option>
+      @for (category of categories; track category) {
+        <option [value]="category">{{ categoryLabels[category] }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="sidebar-filters__field">
+    <span>До какого времени</span>
+    <select [(ngModel)]="draft.maxCookingTime" (ngModelChange)="applyChanges()" name="cook-time">
+      <option [ngValue]="null">Любое время</option>
+      @for (option of timeOptions; track option) {
+        <option [ngValue]="option">До {{ option }} минут</option>
+      }
+    </select>
+  </label>
+
+  <label class="sidebar-filters__field">
+    <span>Сложность</span>
+    <select [(ngModel)]="draft.difficulty" (ngModelChange)="applyChanges()" name="difficulty">
+      <option value="all">Любая</option>
+      @for (difficulty of difficulties; track difficulty) {
+        <option [value]="difficulty">{{ difficultyLabels[difficulty] }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="sidebar-filters__field">
+    <span>Диета</span>
+    <select [(ngModel)]="draft.diet" (ngModelChange)="applyChanges()" name="diet">
+      <option value="all">Любой формат</option>
+      @for (diet of diets; track diet) {
+        <option [value]="diet">{{ dietLabels[diet] }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="sidebar-filters__field">
+    <span>Ингредиент</span>
+    <input
+      type="text"
+      [(ngModel)]="draft.ingredient"
+      (ngModelChange)="applyChanges()"
+      name="ingredient"
+      placeholder="Например, лимон или курица"
+    >
+  </label>
+
+  <label class="sidebar-filters__field">
+    <span>Формат</span>
+    <select [(ngModel)]="draft.format" (ngModelChange)="applyChanges()" name="format">
+      <option value="all">Еда и напитки</option>
+      <option value="food">Только еда</option>
+      <option value="drink">Только напитки</option>
+    </select>
+  </label>
+
+  <label class="sidebar-filters__checkbox">
+    <input type="checkbox" [(ngModel)]="draft.favoritesOnly" (ngModelChange)="applyChanges()" name="favorites">
+    <span>Только избранные рецепты</span>
+  </label>
+</aside>

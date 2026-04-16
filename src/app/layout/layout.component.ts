@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AppHeaderComponent } from '../shared/components/app-header/app-header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
-import { HeaderComponent } from '../shared/components/header/header.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, AppHeaderComponent, FooterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="app-shell">
-      <app-header />
+      <app-app-header />
       <main class="app-shell__main">
         <router-outlet />
       </main>
@@ -25,7 +25,7 @@ import { HeaderComponent } from '../shared/components/header/header.component';
       }
 
       .app-shell__main {
-        padding: 1.25rem 1rem 3.5rem;
+        padding: 1rem 1rem 4rem;
       }
 
       @media (max-width: 640px) {

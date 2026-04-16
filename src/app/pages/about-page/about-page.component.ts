@@ -19,11 +19,11 @@ import { RouterLink } from '@angular/router';
       <div class="about-page__grid">
         <article>
           <h2>Данные</h2>
-          <p>Рецепты вынесены в typed seed-файл и читаются через сервис-репозиторий.</p>
+          <p>Рецепты вынесены в типизированный файл с исходными данными и читаются через сервис-репозиторий.</p>
         </article>
         <article>
-          <h2>UI</h2>
-          <p>Повторно используются карточки рецептов, badge-компоненты, pipe и directive.</p>
+          <h2>Интерфейс</h2>
+          <p>Повторно используются карточки рецептов, компактные инфоблоки, пользовательский pipe и атрибутивная директива.</p>
         </article>
         <article>
           <h2>Навигация</h2>
@@ -50,14 +50,14 @@ import { RouterLink } from '@angular/router';
 
       .about-page__grid article {
         padding: 1.2rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--card-border);
         border-radius: var(--radius-lg);
-        background: rgba(255, 255, 255, 0.72);
+        background: var(--card-bg);
       }
 
       .about-page__grid p {
         margin-top: 0.5rem;
-        color: var(--text-soft);
+        color: var(--text-secondary);
         line-height: 1.65;
       }
     `,

@@ -9,19 +9,19 @@ interface DifficultyStyle {
 
 const DIFFICULTY_STYLES: Readonly<Record<RecipeDifficulty, DifficultyStyle>> = {
   easy: {
-    background: 'rgba(190, 223, 178, 0.55)',
-    border: '#7da56a',
-    color: '#305023',
+    background: 'var(--tag-difficulty-easy-bg)',
+    border: 'var(--tag-difficulty-easy-bg)',
+    color: 'var(--tag-difficulty-easy-text)',
   },
   medium: {
-    background: 'rgba(255, 221, 170, 0.6)',
-    border: '#d69b37',
-    color: '#6d4308',
+    background: 'var(--tag-difficulty-medium-bg)',
+    border: 'var(--tag-difficulty-medium-bg)',
+    color: 'var(--tag-difficulty-medium-text)',
   },
   hard: {
-    background: 'rgba(245, 188, 188, 0.65)',
-    border: '#c95a5a',
-    color: '#6f1f1f',
+    background: 'var(--tag-difficulty-hard-bg)',
+    border: 'var(--tag-difficulty-hard-bg)',
+    color: 'var(--tag-difficulty-hard-text)',
   },
 };
 

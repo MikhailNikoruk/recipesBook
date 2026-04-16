@@ -20,10 +20,10 @@ export class HighlightOnHoverDirective {
     this.hovered() ? 'translateY(-4px)' : 'translateY(0)',
   );
   protected readonly shadow = computed(() =>
-    this.hovered() ? '0 28px 58px rgba(88, 55, 31, 0.18)' : 'var(--shadow)',
+    this.hovered() ? 'var(--shadow-interactive)' : 'var(--shadow-md)',
   );
   protected readonly borderColor = computed(() =>
-    this.hovered() ? 'rgba(217, 108, 63, 0.36)' : 'var(--line)',
+    this.hovered() ? 'var(--chip-selected-border)' : 'var(--card-border)',
   );
 
   protected setHovered(value: boolean): void {

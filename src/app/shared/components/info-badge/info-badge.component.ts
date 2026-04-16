@@ -18,21 +18,23 @@ type BadgeTone = 'neutral' | 'accent' | 'warm';
         gap: 0.2rem;
         min-width: 108px;
         padding: 0.8rem 0.9rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--card-border);
         border-radius: var(--radius-md);
-        background: rgba(255, 255, 255, 0.72);
+        background: var(--badge-neutral-bg);
       }
 
       .info-badge--accent {
-        background: var(--accent-soft);
+        background: var(--badge-accent-bg);
+        color: var(--badge-accent-text);
       }
 
       .info-badge--warm {
-        background: var(--brand-soft);
+        background: var(--badge-warm-bg);
+        color: var(--badge-warm-text);
       }
 
       .info-badge__label {
-        color: var(--text-soft);
+        color: var(--text-secondary);
         font-size: 0.82rem;
       }
 

@@ -1,12 +1,10 @@
-<article class="recipe-card" appHighlightOnHover>
+<article class="recipe-card" [class.recipe-card--list]="viewMode() === 'list'" appHighlightOnHover>
   <img class="recipe-card__image" [src]="imageUrl()" [alt]="recipe().name">
 
   <div class="recipe-card__content">
-    <div class="recipe-card__meta">
+    <div class="recipe-card__topline">
       <span class="recipe-card__category">{{ categoryLabels[recipe().category] }}</span>
-      <span class="recipe-card__difficulty" [appRecipeDifficultyColor]="recipe().difficulty">
-        {{ difficultyLabels[recipe().difficulty] }}
-      </span>
+      <app-favorite-button [recipeId]="recipe().id" />
     </div>
 
     <div class="recipe-card__heading">
@@ -14,9 +12,11 @@
       <p>{{ recipe().description }}</p>
     </div>
 
-    <div class="recipe-card__badges">
-      <app-info-badge label="Время" [value]="recipe().cookingTime | cookingTime" tone="warm" />
-      <app-info-badge label="Порции" [value]="recipe().servings + ' порц.'" />
+    <div class="recipe-card__meta-row">
+      <span>{{ recipe().cookingTime | cookingTime }}</span>
+      <span [appRecipeDifficultyColor]="recipe().difficulty">{{ difficultyLabels[recipe().difficulty] }}</span>
+      <span>{{ recipe().servings }} порц.</span>
+      <span>{{ recipe().calories }} ккал</span>
     </div>
 
     <div class="recipe-card__tags">
@@ -25,8 +25,16 @@
       }
     </div>
 
-    <a class="recipe-card__link" [routerLink]="['/recipes', recipe().id]" (click)="requestDetails()">
-      Подробнее
-    </a>
+    <div class="recipe-card__diet">
+      @for (diet of recipe().diet.slice(0, 2); track diet) {
+        <span>{{ dietLabels[diet] }}</span>
+      }
+    </div>
+
+    <div class="recipe-card__actions">
+      <a class="recipe-card__link" [routerLink]="['/recipes', recipe().id]" (click)="requestDetails()">
+        Открыть рецепт
+      </a>
+    </div>
   </div>
 </article>

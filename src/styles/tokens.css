@@ -1,0 +1,174 @@
+:root {
+  color-scheme: light;
+
+  /* Core neutrals */
+  --color-bg: #f8f5f0;
+  --color-surface: #fffdfc;
+  --color-surface-2: #f2ece4;
+  --color-surface-3: #e8ded2;
+  --color-border: #d8cabc;
+  --color-border-strong: #b79f8a;
+
+  /* Text */
+  --color-text-primary: #2b211b;
+  --color-text-secondary: #5f5146;
+  --color-text-muted: #7c6c60;
+  --color-text-inverse: #fffdf9;
+
+  /* Brand accents */
+  --color-primary: #c96a2b;
+  --color-primary-hover: #b85c20;
+  --color-primary-active: #984817;
+  --color-primary-soft: #f3d8c5;
+
+  --color-secondary: #6e8b63;
+  --color-secondary-hover: #5d7753;
+  --color-secondary-soft: #dde7d8;
+
+  --color-accent: #a84e3a;
+  --color-accent-soft: #f0d2cb;
+
+  /* Utility */
+  --color-success: #4e7a57;
+  --color-success-soft: #d8e8da;
+  --color-warning: #b7791f;
+  --color-warning-soft: #f5e2bf;
+  --color-danger: #b94a48;
+  --color-danger-soft: #f1d1d0;
+  --color-info: #5f7fa3;
+  --color-info-soft: #d8e4f0;
+
+  /* Special-purpose */
+  --color-overlay: rgba(43, 33, 27, 0.5);
+  --color-focus: #2f6fed;
+  --color-favorite: #b94a48;
+
+  /* Metadata tags */
+  --tag-category-bg: var(--color-surface-2);
+  --tag-category-text: var(--color-text-secondary);
+  --tag-time-bg: #f5e2bf;
+  --tag-time-text: #7b5314;
+  --tag-diet-bg: #dde7d8;
+  --tag-diet-text: #35513a;
+  --tag-dessert-bg: #f2d7d2;
+  --tag-dessert-text: #6b3a30;
+  --tag-drink-bg: #dce7ee;
+  --tag-drink-text: #3d586f;
+  --tag-difficulty-easy-bg: #d8e8da;
+  --tag-difficulty-easy-text: #315038;
+  --tag-difficulty-medium-bg: #f3e2bf;
+  --tag-difficulty-medium-text: #70511e;
+  --tag-difficulty-hard-bg: #eaccc7;
+  --tag-difficulty-hard-text: #6d3429;
+
+  /* Semantic aliases for app usage */
+  --background: var(--color-bg);
+  --surface: var(--color-surface);
+  --surface-elevated: var(--color-surface);
+  --surface-muted: var(--color-surface-2);
+  --surface-strong: var(--color-surface);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --text-inverse: var(--color-text-inverse);
+  --border-subtle: var(--color-border);
+  --border-strong: var(--color-border-strong);
+  --primary: var(--color-primary);
+  --primary-hover: var(--color-primary-hover);
+  --primary-active: var(--color-primary-active);
+  --secondary: var(--color-secondary);
+  --secondary-hover: var(--color-secondary-hover);
+  --accent: var(--color-accent);
+  --success: var(--color-success);
+  --warning: var(--color-warning);
+  --danger: var(--color-danger);
+  --info: var(--color-info);
+  --focus-ring: var(--color-focus);
+  --overlay: var(--color-overlay);
+  --favorite: var(--color-favorite);
+
+  /* Component tokens */
+  --page-bg: var(--background);
+  --page-section-bg: var(--surface);
+  --panel-bg: var(--surface);
+  --panel-muted-bg: var(--color-surface-2);
+  --panel-emphasis-bg: var(--color-surface-3);
+  --card-bg: var(--surface);
+  --card-bg-muted: var(--color-surface-2);
+  --card-border: var(--border-subtle);
+  --card-border-strong: var(--border-strong);
+
+  --button-primary-bg: var(--primary);
+  --button-primary-bg-hover: var(--primary-hover);
+  --button-primary-bg-active: var(--primary-active);
+  --button-primary-text: var(--text-inverse);
+  --button-primary-border: var(--primary);
+
+  --button-secondary-bg: var(--surface);
+  --button-secondary-bg-hover: var(--color-surface-2);
+  --button-secondary-text: var(--text-primary);
+  --button-secondary-border: var(--border-subtle);
+
+  --input-bg: var(--surface);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-muted);
+  --input-border: var(--border-subtle);
+  --input-border-focus: var(--border-strong);
+  --input-ring: rgba(47, 111, 237, 0.22);
+
+  --chip-bg: var(--surface);
+  --chip-text: var(--text-secondary);
+  --chip-border: var(--border-subtle);
+  --chip-bg-hover: var(--color-surface-2);
+  --chip-selected-bg: var(--color-primary-soft);
+  --chip-selected-border: var(--color-primary);
+  --chip-selected-text: var(--color-primary-active);
+
+  --badge-neutral-bg: var(--color-surface-2);
+  --badge-neutral-text: var(--text-secondary);
+  --badge-accent-bg: var(--color-secondary-soft);
+  --badge-accent-text: var(--color-secondary-hover);
+  --badge-warm-bg: var(--color-warning-soft);
+  --badge-warm-text: var(--tag-time-text);
+
+  --header-bg: rgba(255, 253, 252, 0.88);
+  --header-border: rgba(183, 159, 138, 0.44);
+  --header-shadow: 0 16px 42px rgba(43, 33, 27, 0.08);
+  --header-icon-bg: var(--surface);
+  --header-icon-border: var(--border-subtle);
+
+  --shadow-sm: 0 10px 24px rgba(43, 33, 27, 0.06);
+  --shadow-md: 0 16px 34px rgba(43, 33, 27, 0.08);
+  --shadow-lg: 0 24px 48px rgba(43, 33, 27, 0.12);
+  --shadow-interactive: 0 22px 44px rgba(43, 33, 27, 0.14);
+
+  --overlay-panel-bg: rgba(255, 253, 252, 0.94);
+  --skeleton-base: #e8ded2;
+  --skeleton-highlight: #f8f5f0;
+
+  /* Legacy aliases kept during migration */
+  --surface-raised: var(--surface-elevated);
+  --text-main: var(--text-primary);
+  --text-soft: var(--text-secondary);
+  --brand: var(--primary);
+  --brand-dark: var(--primary-active);
+  --brand-soft: var(--color-primary-soft);
+  --accent-soft: var(--color-secondary-soft);
+  --line: var(--border-subtle);
+  --shadow: var(--shadow-md);
+
+  /* Layout tokens */
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --content-width: 1248px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+}
+
+/* Reserved token names for a future dark theme.
+   Keep components mapped to semantic tokens so this switch can be added later. */
