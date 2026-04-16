@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
     <footer class="site-footer">
       <div class="site-footer__inner page-section">
         <div class="site-footer__brand">
-          <strong>Книга рецептов</strong>
+          <strong>BookBites</strong>
           <p>
             SPA на Angular 21 с более редакционной подачей: подборки, community-блоки и насыщенная
             домашняя визуальная система.

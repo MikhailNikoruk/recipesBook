@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
     <section class="about-page page-section glass-panel">
       <div class="section-heading">
         <p class="section-heading__eyebrow">О проекте</p>
-        <h1>Как устроена «Книга рецептов»</h1>
+        <h1>Как устроен BookBites</h1>
         <p class="section-heading__text">
           Приложение собрано на Angular 21 с <code>bootstrapApplication</code>, standalone-компонентами,
           маршрутизацией, сигналами и чистым разделением доменной и UI-логики.

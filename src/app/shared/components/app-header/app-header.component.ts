@@ -10,9 +10,9 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
     <header class="app-header">
       <div class="app-header__shell page-section">
         <a class="app-header__brand" routerLink="/">
-          <span class="app-header__logo">KR</span>
+          <img class="app-header__logo" src="images/bookbites-logo.svg" alt="Логотип BookBites">
           <span class="app-header__brand-copy">
-            <strong>Книга рецептов</strong>
+            <strong>BookBites</strong>
             <small>Каталог блюд и напитков</small>
           </span>
         </a>
@@ -85,14 +85,10 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
       }
 
       .app-header__logo {
-        display: inline-grid;
-        place-items: center;
         width: 2.75rem;
         height: 2.75rem;
-        border-radius: 18px;
-        background: var(--button-primary-bg);
-        color: var(--button-primary-text);
-        font-weight: 800;
+        object-fit: contain;
+        flex: 0 0 auto;
       }
 
       .app-header__brand-copy {

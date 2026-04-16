@@ -1,0 +1,42 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(112)">
+      <stop stop-color="#FFDCA8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#C96A2B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="plate" x1="60" y1="52" x2="196" y2="204" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF2"/>
+      <stop offset="1" stop-color="#FFF7DD"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="84" y1="98" x2="155" y2="193" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2B25C"/>
+      <stop offset="1" stop-color="#9C6A26"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="114" y1="104" x2="184" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2C784"/>
+      <stop offset="1" stop-color="#7A5B24"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="128" cy="128" r="112" fill="url(#glow)"/>
+  <circle cx="128" cy="128" r="87" fill="url(#plate)" stroke="#E58A34" stroke-width="4"/>
+  <circle cx="128" cy="128" r="76" fill="none" stroke="#F2C17D" stroke-width="2.5"/>
+
+  <path d="M103 58C97.5 58 92.2 60.2 88.3 64.1C84.4 68 82.2 73.3 82.2 78.8C82.2 79.6 82.2 80.4 82.4 81.2C73.7 83.2 67.2 90.9 67.2 100.2C67.2 111 76 119.8 86.8 119.8H171.2C182 119.8 190.8 111 190.8 100.2C190.8 89.6 182.4 81 171.8 80.6C169.2 70.1 160 62.2 149 62.2C145.8 62.2 142.8 62.8 140 63.8C135.4 56.4 127.2 51.6 117.8 51.6C111.8 51.6 106.2 53.9 102 58.1L103 58Z" fill="#FFF7DF" stroke="#4B2D16" stroke-width="6.5" stroke-linejoin="round"/>
+  <path d="M104 98.5C109.8 109 121 115.8 133.2 115.8C145.5 115.8 156.7 109 162.5 98.5" stroke="#4B2D16" stroke-width="5" stroke-linecap="round"/>
+  <path d="M104 98.5C113 102.2 122.9 104.2 133.2 104.2C143.6 104.2 153.5 102.2 162.5 98.5" stroke="#A37A3B" stroke-width="3.5" stroke-linecap="round"/>
+
+  <rect x="118" y="115" width="17" height="87" rx="8.5" transform="rotate(45 118 115)" fill="url(#wood)" stroke="#4B2D16" stroke-width="5.5"/>
+  <path d="M84 104C77 96 73 89 73 79.5C73 71.5 78.2 66 85.8 66C101 66 112.5 87 108.5 100.5C104.9 112.8 96.5 117 84 104Z" fill="#D9A24F" stroke="#7B4C1F" stroke-width="4"/>
+  <path d="M80.5 78C87.5 83.5 94 92.5 98 101.5" stroke="#F7D98F" stroke-width="3" stroke-linecap="round"/>
+
+  <path d="M133.5 115L145.5 103C151.2 97.3 160.4 97.3 166.1 103L172.9 109.8L149.3 133.4L133.5 117.6V115Z" fill="url(#metal)" stroke="#4B2D16" stroke-width="5.5" stroke-linejoin="round"/>
+  <path d="M160.8 100L182.5 78.3" stroke="#4B2D16" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M169.8 107L189 87.8" stroke="#4B2D16" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M178.5 114.8L195 98.3" stroke="#4B2D16" stroke-width="5.5" stroke-linecap="round"/>
+  <rect x="142" y="129" width="17" height="75" rx="8.5" transform="rotate(-45 142 129)" fill="#8F9A55" stroke="#4B2D16" stroke-width="5.5"/>
+
+  <path d="M61 158C70 155 77 157.5 82.5 165.5C72.5 170 65.5 167.5 61 158Z" fill="#A6A56B" stroke="#8E8853" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M75 151C84 148 91 150.5 96.5 158.5C86.5 163 79.5 160.5 75 151Z" fill="#B9B77C" stroke="#8E8853" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M70 164C82 160 89 151 95 138" stroke="#8E8853" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

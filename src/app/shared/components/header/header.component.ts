@@ -17,9 +17,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <div class="site-header__inner page-section">
         <div class="site-header__main glass-panel">
           <a class="site-header__brand" routerLink="/">
-            <span class="site-header__brand-mark">KR</span>
+            <img class="site-header__brand-mark" src="images/bookbites-logo.svg" alt="Логотип BookBites">
             <span>
-              <strong>Книга рецептов</strong>
+              <strong>BookBites</strong>
               <small>Домашняя кухня, напитки и продуманные подборки</small>
             </span>
           </a>
@@ -113,15 +113,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       }
 
       .site-header__brand-mark {
-        display: inline-grid;
-        place-items: center;
         width: 2.8rem;
         height: 2.8rem;
-        border-radius: 18px;
-        background: var(--button-primary-bg);
-        color: var(--button-primary-text);
-        font-weight: 800;
-        letter-spacing: 0.04em;
+        object-fit: contain;
       }
 
       .site-header__nav {
