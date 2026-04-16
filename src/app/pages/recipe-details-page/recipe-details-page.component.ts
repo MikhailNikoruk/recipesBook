@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AssetUrlService } from '../../core/services/asset-url.service';
 import { RecipeRepositoryService } from '../../core/services/recipe-repository.service';
 import { RECIPE_CATEGORY_LABELS, RECIPE_DIFFICULTY_LABELS } from '../../models/recipe.model';
 import { RecipeDifficultyColorDirective } from '../../shared/directives/recipe-difficulty-color.directive';
@@ -21,6 +22,7 @@ import { RecipeCardComponent } from '../../shared/components/recipe-card/recipe-
   styleUrl: './recipe-details-page.component.scss',
 })
 export class RecipeDetailsPageComponent {
+  private readonly assetUrlService = inject(AssetUrlService);
   private readonly recipeRepository = inject(RecipeRepositoryService);
 
   id = input.required<string>();
@@ -53,5 +55,14 @@ export class RecipeDetailsPageComponent {
           (recipe.category === currentRecipe.category || recipe.isDrink === currentRecipe.isDrink),
       )
       .slice(0, 2);
+  });
+  protected readonly imageUrl = computed(() => {
+    const currentRecipe = this.recipe();
+
+    if (!currentRecipe) {
+      return '';
+    }
+
+    return this.assetUrlService.resolve(currentRecipe.image);
   });
 }

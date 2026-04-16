@@ -1,6 +1,6 @@
 @if (recipe(); as currentRecipe) {
   <section class="recipe-details page-section glass-panel">
-    <img class="recipe-details__image" [src]="currentRecipe.image" [alt]="currentRecipe.name">
+    <img class="recipe-details__image" [src]="imageUrl()" [alt]="currentRecipe.name">
 
     <div class="recipe-details__content">
       <div class="recipe-details__meta">

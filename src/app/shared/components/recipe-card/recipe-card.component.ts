@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AssetUrlService } from '../../../core/services/asset-url.service';
 import {
   RECIPE_CATEGORY_LABELS,
   RECIPE_DIFFICULTY_LABELS,
@@ -24,11 +25,16 @@ import { InfoBadgeComponent } from '../info-badge/info-badge.component';
   styleUrl: './recipe-card.component.scss',
 })
 export class RecipeCardComponent {
+  private readonly assetUrlService = inject(AssetUrlService);
+
   recipe = input.required<Recipe>();
   detailsRequested = output<number>();
 
   protected readonly categoryLabels = RECIPE_CATEGORY_LABELS;
   protected readonly difficultyLabels = RECIPE_DIFFICULTY_LABELS;
+  protected readonly imageUrl = computed(() =>
+    this.assetUrlService.resolve(this.recipe().image),
+  );
 
   protected requestDetails(): void {
     this.detailsRequested.emit(this.recipe().id);
