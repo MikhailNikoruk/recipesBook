@@ -94,6 +94,13 @@ import { RouterLink } from '@angular/router';
       @media (max-width: 720px) {
         .site-footer__inner {
           grid-template-columns: 1fr;
+          gap: 1.15rem;
+          padding: 1.2rem;
+        }
+
+        .site-footer__brand p {
+          font-size: 0.95rem;
+          line-height: 1.6;
         }
       }
     `,

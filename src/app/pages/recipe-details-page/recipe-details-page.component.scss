@@ -270,7 +270,53 @@
 }
 
 @media (max-width: 640px) {
+  .recipe-hero {
+    gap: 1rem;
+  }
+
+  .recipe-hero__image {
+    min-height: 260px;
+  }
+
+  .recipe-hero__content,
+  .recipe-panel {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .recipe-hero__copy h1 {
+    max-width: 9ch;
+    font-size: clamp(2.15rem, 11vw, 3.2rem);
+  }
+
+  .recipe-hero__copy p:last-child,
+  .recipe-missing p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
   .recipe-hero__stats {
     grid-template-columns: 1fr;
+  }
+
+  .recipe-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .recipe-hero__action {
+    width: 100%;
+  }
+
+  .recipe-layout,
+  .recipe-related {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .recipe-panel__header,
+  .recipe-step {
+    gap: 0.75rem;
   }
 }

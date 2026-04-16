@@ -73,7 +73,15 @@ import { FormsModule } from '@angular/forms';
 
       @media (max-width: 640px) {
         .search-bar {
-          grid-template-columns: 1fr;
+          grid-template-columns: auto 1fr;
+          gap: 0.65rem;
+          padding: 0.65rem;
+        }
+
+        .search-bar__button {
+          grid-column: 1 / -1;
+          width: 100%;
+          min-height: 3rem;
         }
       }
     `,

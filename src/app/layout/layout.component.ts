@@ -30,7 +30,7 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 
       @media (max-width: 640px) {
         .app-shell__main {
-          padding-inline: 0.85rem;
+          padding: 0.85rem 0.85rem 2.75rem;
         }
       }
     `,

@@ -135,3 +135,54 @@
     max-width: none;
   }
 }
+
+@media (max-width: 640px) {
+  .home-page__hero {
+    gap: 1rem;
+  }
+
+  .home-page__hero-copy {
+    gap: 1rem;
+    padding: 1.15rem;
+  }
+
+  .home-page__hero-copy h1 {
+    max-width: 8.5ch;
+    font-size: clamp(2.3rem, 12vw, 3.35rem);
+    line-height: 0.96;
+  }
+
+  .home-page__hero-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .home-page__hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .home-page__hero-visual {
+    min-height: 280px;
+  }
+
+  .home-page__featured-card {
+    margin: 0.85rem;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .home-page__section {
+    gap: 1.1rem;
+    margin-top: 1.6rem;
+  }
+
+  .home-page__categories,
+  .home-page__collections {
+    gap: 1rem;
+  }
+
+  .home-page__about {
+    padding: 1.15rem;
+  }
+}

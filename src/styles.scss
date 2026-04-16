@@ -200,4 +200,13 @@ a {
   .button-link {
     width: 100%;
   }
+
+  .page-section {
+    width: 100%;
+  }
+
+  .recipe-grid {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
 }

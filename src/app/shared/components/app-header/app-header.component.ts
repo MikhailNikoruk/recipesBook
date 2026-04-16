@@ -212,19 +212,71 @@ import { FavoriteRecipesService } from '../../../core/services/favorite-recipes.
       }
 
       @media (max-width: 640px) {
+        .app-header {
+          padding: 0.6rem 0.85rem 0;
+        }
+
+        .app-header__shell {
+          gap: 0.9rem;
+          padding: 0.9rem;
+          border-radius: 22px;
+        }
+
+        .app-header__brand {
+          justify-content: flex-start;
+          gap: 0.8rem;
+        }
+
         .app-header__logo-frame {
-          width: 3.7rem;
-          height: 3.7rem;
-          border-radius: 1.15rem;
+          width: 3.4rem;
+          height: 3.4rem;
+          border-radius: 1rem;
         }
 
         .app-header__logo {
+          width: 2.7rem;
+          height: 2.7rem;
+        }
+
+        .app-header__brand-copy strong {
+          font-size: 1rem;
+        }
+
+        .app-header__brand-copy small {
+          font-size: 0.78rem;
+        }
+
+        .app-header__nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.5rem;
+          width: 100%;
+        }
+
+        .app-header__nav-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 2.75rem;
+          text-align: center;
+          padding: 0.7rem 0.75rem;
+        }
+
+        .app-header__actions {
+          width: 100%;
+          justify-content: stretch;
+          gap: 0.55rem;
+        }
+
+        .app-header__icon-button {
           width: 3rem;
           height: 3rem;
         }
 
         .app-header__cta {
+          flex: 1 1 auto;
           width: auto;
+          min-height: 3rem;
         }
       }
     `,

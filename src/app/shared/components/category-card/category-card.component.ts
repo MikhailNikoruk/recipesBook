@@ -17,8 +17,14 @@ import { RouterLink } from '@angular/router';
   `,
   styles: [
     `
+      :host {
+        display: block;
+        height: 100%;
+      }
+
       .category-card {
         display: grid;
+        height: 100%;
         overflow: hidden;
         border: 1px solid var(--card-border);
         border-radius: 24px;
@@ -34,8 +40,10 @@ import { RouterLink } from '@angular/router';
       }
 
       .category-card__content {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 0.55rem;
+        min-height: 100%;
         padding: 1.2rem;
       }
 
@@ -49,11 +57,19 @@ import { RouterLink } from '@angular/router';
 
       .category-card__content h3 {
         font-size: 1.2rem;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
 
       .category-card__content p {
         color: var(--text-secondary);
         line-height: 1.6;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
       }
     `,
   ],
