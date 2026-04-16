@@ -1,0 +1,61 @@
+<section class="filter-panel glass-panel">
+  <div class="filter-panel__heading">
+    <div>
+      <p class="filter-panel__eyebrow">Живой поиск</p>
+      <h2>Фильтры каталога</h2>
+    </div>
+    <button type="button" class="filter-panel__reset" (click)="resetFilters()">Сбросить</button>
+  </div>
+
+  <div class="filter-panel__grid">
+    <label class="filter-panel__field">
+      <span>Название или тег</span>
+      <input
+        type="text"
+        name="search"
+        placeholder="Например, суп или шоколад"
+        [(ngModel)]="draft.search"
+        (ngModelChange)="emitChanges()"
+      >
+    </label>
+
+    <label class="filter-panel__field">
+      <span>Категория</span>
+      <select name="category" [(ngModel)]="draft.category" (ngModelChange)="emitChanges()">
+        <option value="all">Все категории</option>
+        @for (category of categories; track category) {
+          <option [value]="category">{{ categoryLabels[category] }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="filter-panel__field">
+      <span>Сложность</span>
+      <select name="difficulty" [(ngModel)]="draft.difficulty" (ngModelChange)="emitChanges()">
+        <option value="all">Любая</option>
+        @for (difficulty of difficulties; track difficulty) {
+          <option [value]="difficulty">{{ difficultyLabels[difficulty] }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="filter-panel__field">
+      <span>Формат</span>
+      <select name="format" [(ngModel)]="draft.format" (ngModelChange)="emitChanges()">
+        <option value="all">Еда и напитки</option>
+        <option value="food">Только блюда</option>
+        <option value="drink">Только напитки</option>
+      </select>
+    </label>
+
+    <label class="filter-panel__field">
+      <span>Максимум по времени</span>
+      <select name="maxCookingTime" [(ngModel)]="draft.maxCookingTime" (ngModelChange)="emitChanges()">
+        <option [ngValue]="null">Без ограничения</option>
+        @for (timeOption of maxCookingTimeOptions; track timeOption) {
+          <option [ngValue]="timeOption">До {{ timeOption }} минут</option>
+        }
+      </select>
+    </label>
+  </div>
+</section>

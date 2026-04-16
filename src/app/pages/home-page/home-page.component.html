@@ -1,0 +1,64 @@
+<section class="home-page__hero page-section glass-panel">
+  <div class="home-page__hero-copy">
+    <p class="section-heading__eyebrow">Angular 21 Recipe SPA</p>
+    <h1>Книга рецептов для блюд и напитков</h1>
+    <p class="home-page__hero-text">
+      Удобный каталог с фильтрами, подробными карточками и аккуратной standalone-архитектурой.
+      Проект показывает production-style подход к учебному Angular SPA.
+    </p>
+
+    <div class="home-page__actions">
+      <a class="button-link" routerLink="/recipes">Смотреть каталог</a>
+      <a class="button-link button-link--secondary" routerLink="/about">Как устроен проект</a>
+    </div>
+
+    <ul class="pill-list">
+      <li>8 рецептов</li>
+      <li>Блюда и напитки</li>
+      <li>Live-фильтрация</li>
+      <li>Standalone only</li>
+    </ul>
+  </div>
+
+  <div class="home-page__stats">
+    <app-info-badge label="Рецептов" [value]="totalRecipes" tone="warm" />
+    <app-info-badge label="Напитков" [value]="totalDrinks" tone="accent" />
+    <app-info-badge label="Среднее время" [value]="averageTime" />
+  </div>
+</section>
+
+<section class="home-page__section page-section">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">Избранное</p>
+    <h2>С чего начать</h2>
+    <p class="section-heading__text">
+      На главной собраны рецепты, которые хорошо показывают разные типы контента: быстрый завтрак,
+      основное блюдо и десерт.
+    </p>
+    @if (lastOpenedRecipeId(); as openedRecipeId) {
+      <p class="section-heading__text">Последний открытый рецепт из блока: #{{ openedRecipeId }}</p>
+    }
+  </div>
+
+  <div class="recipe-grid">
+    @for (recipe of featuredRecipes; track recipe.id) {
+      <app-recipe-card [recipe]="recipe" (detailsRequested)="rememberOpenedRecipe($event)" />
+    }
+  </div>
+</section>
+
+<section class="home-page__section page-section glass-panel home-page__highlights">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">Архитектура</p>
+    <h2>Что реализовано в приложении</h2>
+  </div>
+
+  <div class="home-page__highlight-list">
+    @for (highlight of highlights; track highlight.title) {
+      <article class="home-page__highlight-card">
+        <h3>{{ highlight.title }}</h3>
+        <p>{{ highlight.description }}</p>
+      </article>
+    }
+  </div>
+</section>

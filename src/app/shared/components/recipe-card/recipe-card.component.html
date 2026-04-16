@@ -1,0 +1,32 @@
+<article class="recipe-card" appHighlightOnHover>
+  <img class="recipe-card__image" [src]="recipe().image" [alt]="recipe().name">
+
+  <div class="recipe-card__content">
+    <div class="recipe-card__meta">
+      <span class="recipe-card__category">{{ categoryLabels[recipe().category] }}</span>
+      <span class="recipe-card__difficulty" [appRecipeDifficultyColor]="recipe().difficulty">
+        {{ difficultyLabels[recipe().difficulty] }}
+      </span>
+    </div>
+
+    <div class="recipe-card__heading">
+      <h3>{{ recipe().name }}</h3>
+      <p>{{ recipe().description }}</p>
+    </div>
+
+    <div class="recipe-card__badges">
+      <app-info-badge label="Время" [value]="recipe().cookingTime | cookingTime" tone="warm" />
+      <app-info-badge label="Порции" [value]="recipe().servings + ' порц.'" />
+    </div>
+
+    <div class="recipe-card__tags">
+      @for (tag of recipe().tags; track tag) {
+        <span>{{ tag }}</span>
+      }
+    </div>
+
+    <a class="recipe-card__link" [routerLink]="['/recipes', recipe().id]" (click)="requestDetails()">
+      Подробнее
+    </a>
+  </div>
+</article>

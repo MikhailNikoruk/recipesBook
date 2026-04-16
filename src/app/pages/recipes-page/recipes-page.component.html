@@ -1,0 +1,36 @@
+<section class="recipes-page__hero page-section">
+  <div class="section-heading">
+    <p class="section-heading__eyebrow">Каталог</p>
+    <h1>Рецепты на каждый день</h1>
+    <p class="section-heading__text">
+      Ищите блюда по названию, типу, сложности и времени приготовления. Фильтрация работает
+      мгновенно, без перезагрузки страницы.
+    </p>
+  </div>
+</section>
+
+<section class="recipes-page__content page-section">
+  <app-filter-panel [filters]="filters()" (filtersChange)="updateFilters($event)" />
+
+  <div class="recipes-page__summary">
+    <strong>Найдено: {{ filteredRecipes().length }}</strong>
+    <span>Всего рецептов в книге: {{ allRecipes.length }}</span>
+    @if (lastOpenedRecipeId(); as openedRecipeId) {
+      <span>Последний открытый рецепт: #{{ openedRecipeId }}</span>
+    }
+  </div>
+
+  @if (filteredRecipes().length > 0) {
+    <div class="recipe-grid">
+      @for (recipe of filteredRecipes(); track recipe.id) {
+        <app-recipe-card [recipe]="recipe" (detailsRequested)="rememberOpenedRecipe($event)" />
+      }
+    </div>
+  } @else {
+    <div class="empty-state glass-panel">
+      <h2>Ничего не найдено</h2>
+      <p>Попробуйте убрать часть ограничений или очистите форму фильтров.</p>
+      <button type="button" class="button-link" (click)="resetFilters()">Сбросить фильтры</button>
+    </div>
+  }
+</section>

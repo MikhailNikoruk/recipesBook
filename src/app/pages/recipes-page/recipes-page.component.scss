@@ -1,0 +1,20 @@
+.recipes-page__hero {
+  margin-bottom: 1.5rem;
+}
+
+.recipes-page__hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.recipes-page__content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.recipes-page__summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  color: var(--text-soft);
+}

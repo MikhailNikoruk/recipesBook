@@ -1,0 +1,79 @@
+@if (recipe(); as currentRecipe) {
+  <section class="recipe-details page-section glass-panel">
+    <img class="recipe-details__image" [src]="currentRecipe.image" [alt]="currentRecipe.name">
+
+    <div class="recipe-details__content">
+      <div class="recipe-details__meta">
+        <span class="recipe-details__category">{{ categoryLabels[currentRecipe.category] }}</span>
+        <span class="recipe-details__difficulty" [appRecipeDifficultyColor]="currentRecipe.difficulty">
+          {{ difficultyLabels[currentRecipe.difficulty] }}
+        </span>
+      </div>
+
+      <div class="recipe-details__intro">
+        <h1>{{ currentRecipe.name }}</h1>
+        <p>{{ currentRecipe.description }}</p>
+      </div>
+
+      <div class="recipe-details__badges">
+        <app-info-badge label="Время" [value]="currentRecipe.cookingTime | cookingTime" tone="warm" />
+        <app-info-badge label="Порции" [value]="currentRecipe.servings + ' порц.'" />
+        <app-info-badge
+          label="Формат"
+          [value]="currentRecipe.isDrink ? 'Напиток' : 'Блюдо'"
+          tone="accent"
+        />
+      </div>
+
+      <div class="recipe-details__tags">
+        @for (tag of currentRecipe.tags; track tag) {
+          <span>{{ tag }}</span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="recipe-details__body page-section">
+    <article class="recipe-details__panel glass-panel">
+      <h2>Ингредиенты</h2>
+      <ul class="recipe-details__list">
+        @for (ingredient of currentRecipe.ingredients; track ingredient) {
+          <li>{{ ingredient }}</li>
+        }
+      </ul>
+    </article>
+
+    <article class="recipe-details__panel glass-panel">
+      <h2>Пошаговое приготовление</h2>
+      <ol class="recipe-details__steps">
+        @for (step of currentRecipe.steps; track step; let stepIndex = $index) {
+          <li>
+            <span>{{ stepIndex + 1 }}</span>
+            <p>{{ step }}</p>
+          </li>
+        }
+      </ol>
+    </article>
+  </section>
+
+  @if (relatedRecipes().length > 0) {
+    <section class="recipe-details__related page-section">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Ещё идеи</p>
+        <h2>Похожие рецепты</h2>
+      </div>
+
+      <div class="recipe-grid">
+        @for (relatedRecipe of relatedRecipes(); track relatedRecipe.id) {
+          <app-recipe-card [recipe]="relatedRecipe" />
+        }
+      </div>
+    </section>
+  }
+} @else {
+  <section class="page-section empty-state glass-panel">
+    <h1>Рецепт не найден</h1>
+    <p>Похоже, такого идентификатора нет в каталоге. Вернитесь к списку и выберите карточку из книги.</p>
+    <a class="button-link" routerLink="/recipes">К каталогу</a>
+  </section>
+}
