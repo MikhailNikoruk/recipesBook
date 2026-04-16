@@ -4,7 +4,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 1,
     name: 'Шакшука с томатами и фетой',
-    image: '/images/shakshuka.svg',
+    image: 'images/shakshuka.svg',
     description:
       'Сытный израильский завтрак: яйца томятся в пряном томатном соусе, а фета добавляет солоноватый акцент.',
     category: 'breakfast',
@@ -35,7 +35,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 2,
     name: 'Тыквенный крем-суп с имбирём',
-    image: '/images/pumpkin-soup.svg',
+    image: 'images/pumpkin-soup.svg',
     description:
       'Нежный осенний суп с бархатной текстурой, лёгкой сладостью тыквы и свежим согревающим имбирём.',
     category: 'soup',
@@ -64,7 +64,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 3,
     name: 'Курица терияки с жасминовым рисом',
-    image: '/images/teriyaki-rice.svg',
+    image: 'images/teriyaki-rice.svg',
     description:
       'Сбалансированное основное блюдо с карамельной глазировкой, сочной курицей и свежими овощами.',
     category: 'main',
@@ -94,7 +94,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 4,
     name: 'Лимонный чизкейк без выпечки',
-    image: '/images/cheesecake.svg',
+    image: 'images/cheesecake.svg',
     description:
       'Освежающий десерт с ярким цитрусовым вкусом, сливочной начинкой и хрустящей основой из печенья.',
     category: 'dessert',
@@ -123,7 +123,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 5,
     name: 'Холодный матча-латте',
-    image: '/images/matcha-latte.svg',
+    image: 'images/matcha-latte.svg',
     description:
       'Освежающий напиток с мягкой травяной горчинкой, воздушной пенкой и быстрым способом приготовления.',
     category: 'drink',
@@ -149,7 +149,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 6,
     name: 'Пряный безалкогольный глинтвейн',
-    image: '/images/mulled-drink.svg',
+    image: 'images/mulled-drink.svg',
     description:
       'Тёплый зимний напиток на виноградном соке с апельсином, корицей и насыщенным пряным ароматом.',
     category: 'drink',
@@ -177,7 +177,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 7,
     name: 'Домашний мисо-рамен',
-    image: '/images/ramen.svg',
+    image: 'images/ramen.svg',
     description:
       'Глубокий насыщенный вкус, многослойный бульон и несколько этапов подготовки делают этот рецепт настоящим проектом выходного дня.',
     category: 'soup',
@@ -208,7 +208,7 @@ export const RECIPES: readonly Recipe[] = [
   {
     id: 8,
     name: 'Шоколадный брауни с орехами',
-    image: '/images/brownie.svg',
+    image: 'images/brownie.svg',
     description:
       'Плотный влажный брауни с насыщенным вкусом какао, хрустящими орехами и выразительной шоколадной корочкой.',
     category: 'dessert',
